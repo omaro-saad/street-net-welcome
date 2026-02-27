@@ -4,6 +4,6 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Base path for GitHub Pages: https://omaro-saad.github.io/street-net-welcome/
-  base: '/street-net-welcome/',
+  // Base is root for Vercel deployment
+  // (assets will be requested from /assets/... instead of /street-net-welcome/assets/...)
 })
