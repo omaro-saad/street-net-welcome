@@ -1,0 +1,374 @@
+.plan-generator-page {
+  min-height: 100vh;
+  background: var(--bg-soft, #FAFBFC);
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+
+.pg {
+  max-width: 720px;
+  margin: 0 auto;
+  animation: pgContentEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pgContentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pg-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.pg-subtitle {
+  color: var(--text-secondary);
+  text-align: center;
+  margin: 0 0 2rem;
+  font-size: 1rem;
+}
+
+.pg-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  animation: pgSectionEnter 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+.pg-section:nth-of-type(1) { animation-delay: 0.08s; }
+.pg-section:nth-of-type(2) { animation-delay: 0.14s; }
+.pg-section:nth-of-type(3) { animation-delay: 0.2s; }
+.pg-section:nth-of-type(4) { animation-delay: 0.26s; }
+.pg-section:nth-of-type(5) { animation-delay: 0.32s; }
+.pg-section:nth-of-type(6) { animation-delay: 0.38s; }
+.pg-section:nth-of-type(7) { animation-delay: 0.44s; }
+.pg-section:nth-of-type(8) { animation-delay: 0.5s; }
+
+@keyframes pgSectionEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pg-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+
+.pg-heading-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.pg-heading-row .pg-heading {
+  margin: 0;
+}
+
+.pg-plan-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.pg-plan-card {
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--bg-soft);
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  color: var(--text-secondary);
+}
+.pg-plan-card:active {
+  transform: scale(0.98);
+}
+
+.pg-plan-card:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pg-plan-card.active {
+  border-color: var(--accent);
+  background: rgba(109, 50, 218, 0.1);
+  color: var(--accent);
+}
+
+.pg-plan-card.plus.active {
+  border-color: var(--color-teal, #0d9488);
+  background: rgba(13, 148, 136, 0.1);
+  color: var(--color-teal, #0d9488);
+}
+
+.pg-plan-card.pro.active {
+  border-color: var(--accent);
+  background: rgba(109, 50, 218, 0.12);
+  color: var(--accent);
+}
+
+.pg-duration {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pg-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pg-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.pg-input {
+  padding: 0.65rem 0.85rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.pg-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(109, 50, 218, 0.15);
+}
+
+.pg-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 0.75rem;
+}
+
+.pg-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.pg-secret-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Main secret code: input takes full space, button keeps fixed width */
+.pg-secret-row-main {
+  width: 100%;
+}
+
+.pg-secret-row-main .pg-input-code {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.5rem;
+  padding: 0.85rem 1rem;
+  letter-spacing: 0.15em;
+}
+
+.pg-secret-row-main .pg-btn-generate {
+  flex-shrink: 0;
+}
+
+.pg-input-code {
+  width: 7ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.pg-btn {
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+}
+.pg-btn:active {
+  transform: scale(0.97);
+}
+
+.pg-btn-generate {
+  background: var(--accent);
+  color: white;
+}
+
+.pg-btn-generate:hover {
+  background: var(--accent-hover);
+}
+
+.pg-btn-add {
+  background: var(--color-teal, #0d9488);
+  color: white;
+}
+
+.pg-btn-add:hover {
+  opacity: 0.9;
+}
+
+.pg-btn-small {
+  background: var(--border);
+  color: var(--text-primary);
+  padding: 0.4rem 0.65rem;
+  font-size: 0.85rem;
+}
+
+.pg-btn-remove {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.pg-btn-remove:hover {
+  color: var(--color-coral, #e11d48);
+  border-color: var(--color-coral);
+}
+
+.pg-btn-copy {
+  background: var(--accent);
+  color: white;
+  margin-top: 0.75rem;
+}
+
+.pg-btn-copy:hover {
+  background: var(--accent-hover);
+}
+
+.pg-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.pg-ouser-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--bg-soft);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-bottom: 0.75rem;
+  animation: pgSectionEnter 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.pg-ouser-num {
+  font-weight: 700;
+  color: var(--text-primary);
+  flex-basis: 100%;
+  font-size: 0.9rem;
+}
+
+.pg-ouser-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.pg-ouser-fields .pg-input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.pg-ouser-fields .pg-secret-row {
+  flex: 0 0 auto;
+}
+
+.pg-section-prompt {
+  border: 2px solid var(--accent);
+  background: linear-gradient(180deg, rgba(109, 50, 218, 0.04) 0%, var(--bg-card) 20%);
+}
+
+.pg-prompt-box {
+  margin-bottom: 0.5rem;
+}
+
+.pg-prompt-text {
+  background: #1a1a2e;
+  color: #e5e7eb;
+  padding: 1rem;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  overflow-x: auto;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.pg-btn-whatsapp {
+  display: inline-block;
+  width: 100%;
+  margin-top: 1rem;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.pg-btn-whatsapp:hover {
+  background: #20bd5a;
+  color: white;
+}
+
+.decrypt-result {
+  animation: pgSectionEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (max-width: 600px) {
+  .pg-plan-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pg-ouser-card {
+    flex-direction: column;
+  }
+
+  .pg-ouser-fields {
+    width: 100%;
+  }
+}
